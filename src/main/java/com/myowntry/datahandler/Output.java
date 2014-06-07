@@ -11,6 +11,7 @@ import java.util.Map;
  */
 public class Output {
 
+
     private void writeWordsToFile(List<Map.Entry<String, Integer>> sortedWords){
         Writer writer = null;
         try {

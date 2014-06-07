@@ -32,7 +32,7 @@ public class DataProcessing {
         return counter;
     }
 
-    private List<Map.Entry<String, Integer>> sortWords(Map counter){
+    protected List<Map.Entry<String, Integer>> sortWords(Map counter){
         Set<Map.Entry<String, Integer>> set = counter.entrySet();
         List<Map.Entry<String, Integer>> list = new ArrayList<Map.Entry<String, Integer>>(set);
         Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {

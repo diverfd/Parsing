@@ -1,5 +1,6 @@
 package com.myowntry.datahandler;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
@@ -11,15 +12,15 @@ import java.util.Map;
  */
 public class Output {
 
-
-    private void writeWordsToFile(List<Map.Entry<String, Integer>> sortedWords){
+    protected void writeWordsToFile(List<Map.Entry<String, Integer>> sortedWords, File wordsFilePath){
         Writer writer = null;
         try {
-            writer = new FileWriter(WORDS_FILE);
+            writer = new FileWriter(wordsFilePath);
             for(Map.Entry<String, Integer> each : sortedWords){
                 writer.write(String.valueOf(each) + "\n");
             }
         } catch (IOException e) {
+            e.printStackTrace();
         } finally {
             if (writer != null) {
                 try {

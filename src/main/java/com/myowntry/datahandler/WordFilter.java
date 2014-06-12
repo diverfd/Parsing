@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
  */
 public class WordFilter {
 
-    private static final Pattern NON_WORD_LETTER_PATTERN = Pattern.compile("[^a-zA-Z]");
+    private static final Pattern NON_WORD_LETTER_PATTERN = Pattern.compile("[^a-zA-Zа-яА-Я]");
 
     public String filterWord(String word){
         return NON_WORD_LETTER_PATTERN.matcher(word).replaceAll("");

@@ -29,7 +29,7 @@ public class Executor {
         String url = input.dataIn();
 
         InputProcessing iProcessing = new InputProcessing();
-        String plainText = iProcessing.processTheUrl(url);
+        String plainText = iProcessing.getPlainTextByUrl(url);
 
         WordCounter wordCounter = new WordCounter();
         Map<String, Integer> counter = wordCounter.countWords(plainText);

@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 public class WordCounter {
 
 
-    protected Map<String, Integer> countWords(String plainText){
+    public Map<String, Integer> countWords(String plainText){
         WordFilter wordFilter = new WordFilter();
         Map<String, Integer> counter = new HashMap<String, Integer>();
 

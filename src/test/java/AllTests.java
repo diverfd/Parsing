@@ -45,7 +45,7 @@ public class AllTests {
             }
         }
         return true;
-    }
+    }// given
 
     @Test
     public void wordFilterTest(){

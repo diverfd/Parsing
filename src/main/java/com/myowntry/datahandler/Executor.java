@@ -31,9 +31,11 @@ public class Executor {
         InputProcessing iProcessing = new InputProcessing();
         String plainText = iProcessing.processTheUrl(url);
 
-        DataProcessing dProcessing = new DataProcessing();
-        Map<String, Integer> counter = dProcessing.wordsCounterByEachWord(plainText);
-        List<Map.Entry<String, Integer>> list = dProcessing.sortWords(counter);
+        WordCounter wordCounter = new WordCounter();
+        Map<String, Integer> counter = wordCounter.countWords(plainText);
+
+        WordCounterResultSorter resultSorter = new WordCounterResultSorter();
+        List<Map.Entry<String, Integer>> list = resultSorter.sortWords(counter);
 
         Output output = new Output();
         output.writeWordsToFile(list, resultFile);

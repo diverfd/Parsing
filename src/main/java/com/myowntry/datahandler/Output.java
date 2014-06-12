@@ -1,5 +1,7 @@
 package com.myowntry.datahandler;
 
+import com.sun.org.apache.xpath.internal.SourceTree;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -12,10 +14,10 @@ import java.util.Map;
  */
 public class Output {
 
-    protected void writeWordsToFile(List<Map.Entry<String, Integer>> sortedWords, File wordsFilePath){
+    protected void writeWordsToFile(List<Map.Entry<String, Integer>> sortedWords, File resultFilePath){
         Writer writer = null;
         try {
-            writer = new FileWriter(wordsFilePath);
+            writer = new FileWriter(resultFilePath);
             for(Map.Entry<String, Integer> each : sortedWords){
                 writer.write(String.valueOf(each) + "\n");
             }
@@ -30,5 +32,6 @@ public class Output {
                 }
             }
         }
+        System.out.println("Result has been created here: " + resultFilePath.getAbsolutePath());
     }
 }

@@ -7,7 +7,7 @@ import java.util.*;
  */
 public class WordCounterResultSorter {
 
-    protected List<Map.Entry<String, Integer>> sortWords(Map counter){
+    public List<Map.Entry<String, Integer>> sortWords(Map counter){
         Set<Map.Entry<String, Integer>> set = counter.entrySet();
         List<Map.Entry<String, Integer>> list = new ArrayList<Map.Entry<String, Integer>>(set);
         Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {

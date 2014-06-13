@@ -36,7 +36,7 @@ public class AllTests {
         if (expectedResult.size() != actualResult.size()) {
             return false;
         }
-        for (Map.Entry<String, Integer> entry : actualResult.entrySet()) {
+        for (Map.Entry<String, Integer> entry : expectedResult.entrySet()) {
             String word = entry.getKey();
             int expectedCount = expectedResult.get(word);
             int actualCount = actualResult.get(word);
@@ -45,7 +45,7 @@ public class AllTests {
             }
         }
         return true;
-    }// given
+    }
 
     @Test
     public void wordFilterTest(){

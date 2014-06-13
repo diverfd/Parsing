@@ -9,8 +9,13 @@ public class Input {
 
     public String dataIn(){
         Scanner in = new Scanner(System.in);
-        System.out.print("Enter URL : http://");
-        String url ="http://" + in.nextLine(); //todo: add URL checking
+        String http = "http://";
+        String url;
+        do{
+            System.out.print("Enter URL : http://");
+            url = in.nextLine();
+        } while(url == null || url.length() == 0);
+        url = http + url;
 
         return url;
 

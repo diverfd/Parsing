@@ -5,11 +5,12 @@ import org.jsoup.examples.HtmlToPlainText;
 import org.jsoup.nodes.Document;
 
 import java.io.IOException;
+import java.net.UnknownHostException;
 
 /**
  * Created by box on 07.06.2014.
  */
-public class InputProcessing {
+public class UrlProcessing {
 
     protected String getPlainTextByUrl(String url){
         Document html= null;

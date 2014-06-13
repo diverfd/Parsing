@@ -28,7 +28,7 @@ public class Executor {
         Input input = new Input();
         String url = input.dataIn();
 
-        InputProcessing iProcessing = new InputProcessing();
+        UrlProcessing iProcessing = new UrlProcessing();
         String plainText = iProcessing.getPlainTextByUrl(url);
 
         WordCounter wordCounter = new WordCounter();

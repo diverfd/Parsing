@@ -1,14 +1,10 @@
-import com.myowntry.datahandler.Input;
 import com.myowntry.datahandler.WordCounter;
 import com.myowntry.datahandler.WordFilter;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Scanner;
 
 /**
  * Created by box on 12.06.2014.
@@ -19,16 +15,16 @@ public class AllTests {
     public void testWordCount() {
         WordCounter wordCounter = new WordCounter();
         // given
-        final String text = "ох ах ух ох ах";
+        final String text = "one, two, two, three, three, three.";
 
         // when
         final Map<String, Integer> actualResult = wordCounter.countWords(text);
 
         // then
         Map<String, Integer> expectedResult = new HashMap<String, Integer>();
-        expectedResult.put("oх", 2);
-        expectedResult.put("ах", 2);
-        expectedResult.put("ух", 1);
+        expectedResult.put("one", 1);
+        expectedResult.put("two", 2);
+        expectedResult.put("three", 3);
         Assert.assertTrue(resultMapsAreEqual(expectedResult, actualResult));
     }
 
@@ -53,7 +49,6 @@ public class AllTests {
         final String word = "(Play;Station)";
         final String expectedWord = "PlayStation";
         Assert.assertEquals(expectedWord, wordFilter.filterWord(word));
-
     }
 
 }

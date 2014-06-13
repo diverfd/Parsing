@@ -13,15 +13,15 @@ public class WordCounterResultSorter {
         Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
             public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
 
-                boolean isMapDate01Empty = (o1.getValue() == null || o1.getValue().equals(""));
-                boolean isMapDate02Empty = (o2.getValue() == null || o2.getValue().equals(""));
+                boolean isMapData01Empty = (o1.getValue() == null || o1.getValue().equals(""));
+                boolean isMapData02Empty = (o2.getValue() == null || o2.getValue().equals(""));
 
-                if (isMapDate01Empty && isMapDate02Empty)
+                if (isMapData01Empty && isMapData02Empty)
                     return 0;
                 // at least one of them is not empty
-                if (isMapDate01Empty)
+                if (isMapData01Empty)
                     return -1;
-                if (isMapDate02Empty)
+                if (isMapData02Empty)
                     return 1;
                 //none of them is empty
                 return (o2.getValue()).compareTo(o1.getValue());
@@ -29,4 +29,5 @@ public class WordCounterResultSorter {
         });
         return list;
     }
+
 }

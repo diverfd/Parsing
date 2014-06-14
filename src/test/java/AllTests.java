@@ -1,6 +1,7 @@
 import com.myowntry.datahandler.WordCounter;
 import com.myowntry.datahandler.WordCounterResultSorter;
 import com.myowntry.datahandler.WordFilter;
+import org.apache.commons.validator.routines.UrlValidator;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -47,7 +48,7 @@ public class AllTests {
     }
 
     @Test
-    public void wordFilterTest(){
+    public void testWordFilter(){
         WordFilter wordFilter = new WordFilter();
         final String word = "(Play;Station)";
         final String expectedWord = "PlayStation";
@@ -55,7 +56,7 @@ public class AllTests {
     }
 
     @Test
-    public void resultSorterTest(){
+    public void testResultSorter(){
         WordCounterResultSorter resultSorter = new WordCounterResultSorter();
         //given
         Map<String, Integer> hashMap = new HashMap<String, Integer>();
@@ -70,6 +71,16 @@ public class AllTests {
         expectedResult.add("two=2");
         expectedResult.add("one=1");
         Assert.assertEquals(expectedResult.toString(), actualResult.toString());
+    }
+
+    @Test
+    public void testUrlValidator(){
+        UrlValidator urlValidator = new UrlValidator();
+        if (urlValidator.isValid("http://lan")) {
+            System.out.println("url is valid");
+        } else {
+            System.out.println("url is invalid");
+        }
     }
 
 }

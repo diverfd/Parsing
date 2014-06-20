@@ -5,6 +5,10 @@ import org.apache.commons.validator.routines.UrlValidator;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -15,7 +19,7 @@ import java.util.Map;
  */
 public class AllTests {
 
-    @Test
+//    @Test
     public void testWordCount() {
         WordCounter wordCounter = new WordCounter();
         // given
@@ -47,7 +51,7 @@ public class AllTests {
         return true;
     }
 
-    @Test
+//    @Test
     public void testWordFilter(){
         WordFilter wordFilter = new WordFilter();
         final String word = "(Play;Station)";
@@ -73,7 +77,7 @@ public class AllTests {
         Assert.assertEquals(expectedResult.toString(), actualResult.toString());
     }
 
-    @Test
+//    @Test
     public void testUrlValidator(){
         UrlValidator urlValidator = new UrlValidator();
         if (urlValidator.isValid("http://lan")) {
@@ -81,6 +85,27 @@ public class AllTests {
         } else {
             System.out.println("url is invalid");
         }
+    }
+
+    @Test
+    public void showResult() throws Exception {
+        Class.forName("org.h2.Driver");
+        Connection conn = DriverManager.getConnection("jdbc:h2:~/wordsHolder", "root", "");
+        Statement statement = conn.createStatement();
+        ResultSet result = statement.executeQuery("select * from habrahabr");
+        while (result.next()){
+            System.out.println(result.getInt("id") + " - " + result.getString("title"));
+        }
+
+        statement.close();
+        conn.close();
+
+    }
+    @Test
+    public void testUrlParsing(){
+        WordFilter wordFilter = new WordFilter();
+        String url = "habrahabr.ru";
+        System.out.println(wordFilter.parseUrlForDb(url));
     }
 
 }

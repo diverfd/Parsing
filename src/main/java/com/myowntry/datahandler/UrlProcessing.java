@@ -12,6 +12,8 @@ import java.io.IOException;
 public class UrlProcessing {
 
     protected String getPlainTextByUrl(String url){
+        String http = "http://";
+        url = http + url;
         Document html= null;
         try {
             html = Jsoup.connect(url).get();

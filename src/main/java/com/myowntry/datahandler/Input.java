@@ -15,11 +15,11 @@ public class Input {
         Scanner in = new Scanner(System.in);
         UrlValidator urlValidator = new UrlValidator();
         do{
-            System.out.print("Enter URL : http://");
+            System.out.print("Enter URL : http://www.");
             url = in.nextLine();
         } while(!urlValidator.isValid(http + url));
 //    } while(url == null || url.length() == 0);
-        url = http + url;
+
 
         return url;
     }

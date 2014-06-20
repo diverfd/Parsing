@@ -37,7 +37,12 @@ public class Executor {
         WordCounterResultSorter resultSorter = new WordCounterResultSorter();
         List<Map.Entry<String, Integer>> list = resultSorter.sortWords(counter);
 
-        Output output = new Output();
-        output.writeWordsToFile(list, resultFile);
+//        Output output = new Output();
+//        output.writeWordsToFile(list, resultFile);
+
+        TestH2 testH2 = new TestH2();
+        WordFilter wordFilter = new WordFilter();
+        String parsedUrl = wordFilter.parseUrlForDb(url);
+        testH2.writeToH2db(list, parsedUrl);
     }
 }

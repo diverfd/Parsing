@@ -19,6 +19,7 @@
     <orderEntry type="library" exported="" name="Gradle: commons-logging-1.1.1" level="project" />
     <orderEntry type="library" exported="" name="Gradle: commons-beanutils-1.8.3" level="project" />
     <orderEntry type="library" exported="" name="Gradle: commons-digester-1.8" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: h2-1.4.178" level="project" />
   </component>
 </module>
 

@@ -9,18 +9,23 @@ import java.util.Map;
  */
 public class TestH2 {
     public void writeToH2db(List<Map.Entry<String, Integer>> sortedWords, String parsedUrl)  {
-        String createTable = "CREATE TABLE " + parsedUrl + " (`id` int(5) NOT NULL auto_increment, `title` varchar(50) default NULL)";
+        String createTable = "CREATE TABLE " + parsedUrl + " (`id` int(5) NOT NULL auto_increment, `word` varchar(50) default NULL)";
+        String preparedUpdate = "INSERT INTO " + parsedUrl + " values (default, ?)";
+
         Connection conn = null;
         Statement statement = null;
+        PreparedStatement preparedStatement = null;
         try {
             Class.forName("org.h2.Driver");
             conn = DriverManager.getConnection("jdbc:h2:~/wordsHolder", "root", "");
             statement = conn.createStatement();
             statement.executeUpdate(createTable);
             System.out.println("Table <" + parsedUrl + "> has been created.");
+            preparedStatement = conn.prepareStatement(preparedUpdate);
+
             for(Map.Entry<String, Integer> eachWord : sortedWords){
-                String writeWords = "INSERT INTO " + parsedUrl + " values (default, '" + String.valueOf(eachWord) + "')";
-                statement.executeUpdate(writeWords);
+                preparedStatement.setString(1, eachWord.toString());
+                preparedStatement.executeUpdate();
             }
             System.out.println("Words have been inserted into table <" + parsedUrl + ">.");
         } catch (Exception e) {
@@ -30,6 +35,13 @@ public class TestH2 {
                 try{
                     statement.close();
                 } catch (SQLException e){
+                    e.printStackTrace();
+                }
+            }
+            if(preparedStatement != null){
+                try{
+                    preparedStatement.close();
+                } catch (SQLException e) {
                     e.printStackTrace();
                 }
             }

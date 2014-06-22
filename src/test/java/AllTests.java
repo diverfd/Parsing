@@ -92,9 +92,9 @@ public class AllTests {
         Class.forName("org.h2.Driver");
         Connection conn = DriverManager.getConnection("jdbc:h2:~/wordsHolder", "root", "");
         Statement statement = conn.createStatement();
-        ResultSet result = statement.executeQuery("select * from habrahabr");
+        ResultSet result = statement.executeQuery("select * from lan");
         while (result.next()){
-            System.out.println(result.getInt("id") + " - " + result.getString("title"));
+            System.out.println(result.getInt("id") + " - " + result.getString("word"));
         }
 
         statement.close();

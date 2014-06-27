@@ -8,25 +8,43 @@ import java.util.Map;
  * Created by box on 07.06.2014.
  */
 public class Executor {
-    private File resultFile;
+
 
     public static void main(String[] args) {
-        Executor e = new Executor();
-        String homePath = args[0];
-        if (homePath == null) {
-            throw new IllegalStateException("Путь к домашней директории не введен");
-        }
-        String resultFilePath = homePath + "Result.txt";
-        e.resultFile = new File(resultFilePath);
+        final String URL1 = "docs.oracle.com/javase/tutorial/essential/concurrency/runthread.html";
+        final String URL2 = "lan.ua";
+        final String URL3 = "bbc.com";
+        final Executor e = new Executor();
+        Thread t1 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                e.runHtmlToPlain(URL1);
+            }
+        });
+        Thread t2 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                e.runHtmlToPlain(URL2);
+            }
+        });
+        Thread t3 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                e.runHtmlToPlain(URL3);
+            }
+        });
+        t1.start();
+        t2.start();
+        t3.start();
 
-        e.runHtmlToPlain();
+//        e.runHtmlToPlain();
     }
 
 
 
-    protected void runHtmlToPlain(){
-        Input input = new Input();
-        String url = input.dataIn();
+    protected void runHtmlToPlain(String url){
+//        Input input = new Input();
+//        String url = input.dataIn();
 
         UrlProcessing iProcessing = new UrlProcessing();
         String plainText = iProcessing.getPlainTextByUrl(url);

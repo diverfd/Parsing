@@ -9,7 +9,7 @@ import java.util.Map;
  */
 public class TestH2 {
     public void writeToH2db(List<Map.Entry<String, Integer>> sortedWords, String parsedUrl)  {
-        String createTable = "CREATE TABLE " + parsedUrl + " (`id` int(5) NOT NULL auto_increment, `word` varchar(50) default NULL)";
+        String createTable = "CREATE TABLE " + parsedUrl + " (`id` int(5) NOT NULL auto_increment, `word` varchar(100) default NULL)";
         String preparedUpdate = "INSERT INTO " + parsedUrl + " values (default, ?)";
 
         Connection conn = null;

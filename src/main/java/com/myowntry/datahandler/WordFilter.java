@@ -8,13 +8,13 @@ import java.util.regex.Pattern;
 public class WordFilter {
 
     private static final Pattern NON_WORD_LETTER_PATTERN = Pattern.compile("[^a-zA-Zа-яА-Я]");
-    private static final Pattern URL_PATTERN = Pattern.compile("[.].*");
+    private static final Pattern URL_PATTERN = Pattern.compile("[./]");
 
     public String filterWord(String word){
         return NON_WORD_LETTER_PATTERN.matcher(word).replaceAll("");
     }
 
     public String parseUrlForDb(String url){
-        return URL_PATTERN.matcher(url).replaceAll("");
+        return URL_PATTERN.matcher(url).replaceAll("_");
     }
 }

@@ -1,6 +1,5 @@
 package com.myowntry.datahandler;
 
-import java.io.File;
 import java.util.List;
 import java.util.Map;
 
@@ -8,41 +7,44 @@ import java.util.Map;
  * Created by box on 07.06.2014.
  */
 public class Executor {
-
+    final String URL1 = "docs.oracle.com/javase/tutorial/essential/concurrency/runthread.html";
+    final String URL2 = "lan.ua";
+    final String URL3 = "bbc.com";
 
     public static void main(String[] args) {
-        final String URL1 = "docs.oracle.com/javase/tutorial/essential/concurrency/runthread.html";
-        final String URL2 = "lan.ua";
-        final String URL3 = "bbc.com";
-        final Executor e = new Executor();
+
+        Executor e = new Executor();
+        e.startThreads(e.URL1, e.URL2, e.URL3);
+
+//        e.goingToCountWords();
+    }
+
+    private void startThreads(final String URL1, final String URL2, final String URL3) {
         Thread t1 = new Thread(new Runnable() {
             @Override
             public void run() {
-                e.runHtmlToPlain(URL1);
+                goingToCountWords(URL1);
             }
         });
         Thread t2 = new Thread(new Runnable() {
             @Override
             public void run() {
-                e.runHtmlToPlain(URL2);
+                goingToCountWords(URL2);
             }
         });
         Thread t3 = new Thread(new Runnable() {
             @Override
             public void run() {
-                e.runHtmlToPlain(URL3);
+                goingToCountWords(URL3);
             }
         });
         t1.start();
         t2.start();
         t3.start();
-
-//        e.runHtmlToPlain();
     }
 
 
-
-    protected void runHtmlToPlain(String url){
+    protected void goingToCountWords(String url){
 //        Input input = new Input();
 //        String url = input.dataIn();
 
@@ -58,9 +60,9 @@ public class Executor {
 //        Output output = new Output();
 //        output.writeWordsToFile(list, resultFile);
 
-        TestH2 testH2 = new TestH2();
+        H2dbLogic h2dbLogic = new H2dbLogic();
         WordFilter wordFilter = new WordFilter();
         String parsedUrl = wordFilter.parseUrlForDb(url);
-        testH2.writeToH2db(list, parsedUrl);
+        h2dbLogic.writeToH2db(list, parsedUrl);
     }
 }

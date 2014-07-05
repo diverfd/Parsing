@@ -9,7 +9,7 @@ import java.io.IOException;
 /**
  * Created by box on 07.06.2014.
  */
-public class UrlProcessing {
+public class PlainTextGetter {
 
     protected String getPlainTextByUrl(String url){
         String http = "http://";

@@ -2,6 +2,8 @@ package com.myowntry.datahandler;
 
 import org.apache.commons.validator.routines.UrlValidator;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -9,17 +11,39 @@ import java.util.Scanner;
  */
 public class Input {
 
-    public String dataIn(){
+    public List<String> dataIn(){
+        List<String> urlList = new ArrayList<String>();
+//        String http = "http://";
+//        String url;
+        String choice;
+//        Scanner urlIn = new Scanner(System.in);
+        Scanner choiceIn = new Scanner(System.in);
+//        UrlValidator urlValidator = new UrlValidator();
+//        do{
+//            System.out.print("Enter URL : http://www.");
+//            url = urlIn.nextLine();
+//        } while(!urlValidator.isValid(http + url));
+        boolean stopUrlGathering = false;
+        do {
+            urlList.add(validateUrl());
+            System.out.println("Do you want enter one more? (y/n)");
+            choice = choiceIn.nextLine();
+            if (choice.toLowerCase().contains("n")) {
+                stopUrlGathering = true;
+            }
+        } while (!stopUrlGathering);
+        return urlList;
+    }
+
+    private String validateUrl(){
         String http = "http://";
         String url;
-        Scanner in = new Scanner(System.in);
+        Scanner urlIn = new Scanner(System.in);
         UrlValidator urlValidator = new UrlValidator();
         do{
             System.out.print("Enter URL : http://www.");
-            url = in.nextLine();
+            url = urlIn.nextLine();
         } while(!urlValidator.isValid(http + url));
-//    } while(url == null || url.length() == 0);
-
 
         return url;
     }

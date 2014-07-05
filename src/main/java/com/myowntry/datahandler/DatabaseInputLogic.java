@@ -7,7 +7,7 @@ import java.util.Map;
 /**
  * Created by box on 19.06.2014.
  */
-public class H2dbLogic {
+public class DatabaseInputLogic {
     public void writeToH2db(List<Map.Entry<String, Integer>> sortedWords, String parsedUrl)  {
         String createTable = "CREATE TABLE " + parsedUrl + " (`id` int(5) NOT NULL auto_increment, `word` varchar(100) default NULL)";
         String preparedUpdate = "INSERT INTO " + parsedUrl + " values (default, ?)";

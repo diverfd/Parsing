@@ -13,16 +13,8 @@ public class Input {
 
     public List<String> dataIn(){
         List<String> urlList = new ArrayList<String>();
-//        String http = "http://";
-//        String url;
         String choice;
-//        Scanner urlIn = new Scanner(System.in);
         Scanner choiceIn = new Scanner(System.in);
-//        UrlValidator urlValidator = new UrlValidator();
-//        do{
-//            System.out.print("Enter URL : http://www.");
-//            url = urlIn.nextLine();
-//        } while(!urlValidator.isValid(http + url));
         boolean stopUrlGathering = false;
         do {
             urlList.add(validateUrl());

@@ -16,8 +16,6 @@ public class Executor {
         e.inputUrlsAndStartThreads();
     }
 
-
-
     public void inputUrlsAndStartThreads(){
         Input input = new Input();
         List<String> urlList = input.dataIn();

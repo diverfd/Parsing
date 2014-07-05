@@ -19,7 +19,7 @@ import java.util.Map;
  */
 public class AllTests {
 
-//    @Test
+    @Test
     public void testWordCount() {
         WordCounter wordCounter = new WordCounter();
         // given
@@ -51,7 +51,7 @@ public class AllTests {
         return true;
     }
 
-//    @Test
+    @Test
     public void testWordFilter(){
         WordFilter wordFilter = new WordFilter();
         final String word = "(Play;Station)";
@@ -77,7 +77,7 @@ public class AllTests {
         Assert.assertEquals(expectedResult.toString(), actualResult.toString());
     }
 
-//    @Test
+    @Test
     public void testUrlValidator(){
         UrlValidator urlValidator = new UrlValidator();
         if (urlValidator.isValid("http://lan")) {
